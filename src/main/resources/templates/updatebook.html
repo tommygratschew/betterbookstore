@@ -14,8 +14,9 @@
 </head>
 <body>
 	<div class="container p-3 mb-2 bg-dark text-white">
-	<h1>Add book</h1>
-	<form th:object="${book}" th:action="@{save}" action="#" method="post">
+	<h1>Edit book</h1>
+	<form th:object="${book}" th:action="@{../save}" action="#" method="post">
+		<input type="hidden" id="id" th:field="*{id}"/>
 		<div class="form-group">
 		<label for="t">Title</label>
 		<input class="form-control" type="text" id="t" th:field="*{title}"/>
@@ -36,7 +37,7 @@
 		<label for="p">Price</label>
 		<input class="form-control" type="text" id="p" th:field="*{price}"/>
 		</div>
-		<input type="submit" class="btn btn-success" value="Add"/>
+		<input class="btn btn-success" type="submit" value="Save "/>
 	</form>
 	</div>
 </body>
