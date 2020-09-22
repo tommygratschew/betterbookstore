@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>The Better Bookstore</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+<body>
+	<h1>Add book</h1>
+	<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		<input type="text" id="t" th:field="*{title}"/>
+		<label for="t">Title</label>
+		<input type="text" id="a" th:field="*{author}"/>
+		<label for="a">Author</label>
+		<input type="text" id="y" th:field="*{year}"/>
+		<label for="y">Year</label>
+		<input type="text" id="i" th:field="*{isbn}"/>
+		<label for="i">ISBN</label>
+		<input type="text" id="p" th:field="*{price}"/>
+		<label for="p">Price</label>
+		<input type="submit" value="Save"/>
+	</form>
+</body>
+</html>
