@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>The Better Bookstore</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+	body {background-color:rgb(84, 89, 94); margin-top:15px;}
+	h1 {color:white;}
+	</style>
+</head>
+<body>
+	<div class="container p-3 mb-2 bg-dark text-white">
+	<h1>Add category</h1>
+	<form th:object="${category}" th:action="@{savecategory}" action="#" method="post">
+		<div class="form-group">
+		<label for="n">Name</label>
+		<input class="form-control" type="text" id="n" th:field="*{name}"/>
+		</div>
+		<input type="submit" class="btn btn-success" value="Add"/>
+	</form>
+	</div>
+</body>
+</html>
