@@ -1,5 +1,7 @@
 package hh.swd20.betterbookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,7 @@ import hh.swd20.betterbookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BetterbookstoreApplication {
+	private static final Logger log = LoggerFactory.getLogger(BetterbookstoreApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(BetterbookstoreApplication.class, args);
@@ -29,6 +32,10 @@ public class BetterbookstoreApplication {
 			repository.save(new Book("Grammatik Galleri", "Kaunisto S.", 2014, "978-951-1-20160-1", 40.75, crepository.findByName("Languages").get(0)));
 			repository.save(new Book("Laskentatoimi", "Jormakka .R", 2016, "978-951-37-6622-1", 25.50, crepository.findByName("Mathematics").get(0)));
 	
+			log.info("fetch all books");
+			for (Book book : repository.findAll()) {
+				log.info(book.toString());
+			}
 		};
 	}
 
