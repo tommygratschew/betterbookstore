@@ -11,6 +11,8 @@ import hh.swd20.betterbookstore.domain.Book;
 import hh.swd20.betterbookstore.domain.BookRepository;
 import hh.swd20.betterbookstore.domain.Category;
 import hh.swd20.betterbookstore.domain.CategoryRepository;
+import hh.swd20.betterbookstore.domain.User;
+import hh.swd20.betterbookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BetterbookstoreApplication {
@@ -21,7 +23,7 @@ public class BetterbookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			
 			crepository.save(new Category("Finance"));
@@ -32,6 +34,11 @@ public class BetterbookstoreApplication {
 			repository.save(new Book("Grammatik Galleri", "Kaunisto S.", 2014, "978-951-1-20160-1", 40.75, crepository.findByName("Languages").get(0)));
 			repository.save(new Book("Laskentatoimi", "Jormakka .R", 2016, "978-951-37-6622-1", 25.50, crepository.findByName("Mathematics").get(0)));
 	
+			User user1 = new User("user", "$2a$10$GH/93SFB9Nrxu1V07QyGjuCY8rrz17ZIxJ2631e7KM5hHDFVKWmwO", "USER");
+			User user2 = new User("admin", "$2a$10$n0KoYGbmyAwak6CcMxluL.torTqYCcDcH3hrgOAv0b4bCQoOkVNpm", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
+			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
